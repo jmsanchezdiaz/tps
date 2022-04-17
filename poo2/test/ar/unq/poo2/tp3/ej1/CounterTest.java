@@ -7,6 +7,9 @@ import org.junit.jupiter.api.Test;
 
 public class CounterTest {
 	Counter counter;
+	int testval;
+	Integer testva;
+	
 	
 	@BeforeEach
 	void setUp() {
@@ -55,5 +58,12 @@ public class CounterTest {
 	@Test
 	void testearMayorMultiploEntreMil() {
 		assertEquals(counter.mayorMultiploEntreMil(3, 9), 999);
+	}
+	
+	@Test
+	void test() {
+		
+		System.out.print(testval);
+		System.out.print(testva);
 	}
 }
