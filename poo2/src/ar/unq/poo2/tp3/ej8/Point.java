@@ -40,4 +40,22 @@ public class Point {
 		
 		return new Point(resX, resY);
 	}
+	
+	public boolean isXEqual(Point otherPunto) {
+		return this.getX() == otherPunto.getX();
+	}
+	
+	public boolean isYEqual(Point otherPunto) {
+		return this.getY() == otherPunto.getY();
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		return this.isXEqual((Point) obj) && this.isYEqual((Point) obj);
+	}
+	
+	@Override
+	public String toString() {
+		return "(" + this.getX() + ", " + this.getY() + ")";
+	}
 }

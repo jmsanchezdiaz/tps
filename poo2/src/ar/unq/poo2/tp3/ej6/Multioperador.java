@@ -4,40 +4,31 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Multioperador {
-	private List<Integer> numeros = new ArrayList<Integer>();
 	
-	public int suma() {
+	public int suma(List<Integer> numeros) {
 		int total = 0;
 		
-		for(Integer num : this.getNumeros()) {
+		for(Integer num : numeros) {
 			total += num;
 		}
 		
 		return total;
 	}
 
-	private List<Integer> getNumeros() {
-		return numeros;
-	}
-
-	public void addNumber(int i) {
-		this.getNumeros().add(i);
-	}
-
-	public int multiplicacion() {
+	public int multiplicacion(List<Integer> numeros) {
 		int total = 1;
 		
-		for(Integer num : this.getNumeros()) {
+		for(Integer num : numeros) {
 			total *= num;
 		}
 		
 		return total;
 	}
 
-	public int resta() {
+	public int resta(List<Integer> numeros) {
 		int total = 0;
 		
-		for(Integer num : this.getNumeros()) {
+		for(Integer num : numeros) {
 			total -= num;
 		}
 		
