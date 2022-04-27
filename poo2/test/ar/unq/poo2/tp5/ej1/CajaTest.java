@@ -8,13 +8,15 @@ import org.junit.jupiter.api.Test;
 public class CajaTest {
 	private CajaDeMercado caja;
 	private Producto arroz;
-	private Producto cocacola;
+	private Factura facturaDeServicio;
+	private Factura facturaDeImpuesto;
 	
 	@BeforeEach
 	void setUp() {
 		caja = new CajaDeMercado();
 		arroz = new Producto("Arroz", 34d, 10);
-		cocacola = new ProductoCooperativa("CocaCola", 70d, 15);
+		facturaDeImpuesto = new FacturaDeImpuesto(50d, 15d);
+		facturaDeServicio = new FacturaDeServicio(30d, 10d, 5);
 	}
 	
 	@Test
@@ -28,6 +30,19 @@ public class CajaTest {
 		int stockEsperado = arroz.getStock() - 1;
 		
 		caja.registrarPago(arroz);
+		
+		assertEquals(caja.getMontoTotal(), montoEsperado);
+		assertEquals(arroz.getStock(), stockEsperado);
+	}
+	
+	@Test
+	void puedoRegistarProductosYFacturas() throws Exception {
+		double montoEsperado = arroz.getCosto() + facturaDeImpuesto.getCosto() + facturaDeServicio.getCosto();
+		int stockEsperado = arroz.getStock() - 1;
+		
+		caja.registrarPago(arroz);
+		caja.registrarPago(facturaDeImpuesto);
+		caja.registrarPago(facturaDeServicio);
 		
 		assertEquals(caja.getMontoTotal(), montoEsperado);
 		assertEquals(arroz.getStock(), stockEsperado);

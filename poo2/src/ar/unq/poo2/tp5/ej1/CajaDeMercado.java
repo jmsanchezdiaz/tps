@@ -19,8 +19,8 @@ public class CajaDeMercado {
 		this.setMontoTotal(this.getMontoTotal() + unNumero);
 	}
 	
-	public void registrarPago(Producto unProducto) throws Exception {
-		unProducto.registrar();	
-		this.aumentarMonto(unProducto.getCosto());
+	public void registrarPago(Facturable facturable) throws Exception {
+		facturable.registrar();	
+		this.aumentarMonto(facturable.getCosto());
 	}
 }

@@ -1,6 +1,6 @@
 package ar.unq.poo2.tp5.ej1;
 
-public class Producto {
+public class Producto implements Facturable{
 	private int stock;
 	private String nombre;
 	private double costo;
@@ -36,5 +36,5 @@ public class Producto {
 	private void setStock(int stock) {
 		this.stock = stock;
 	}
-	
+
 }
