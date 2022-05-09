@@ -25,3 +25,18 @@ when(Objeto.methodName).thenReturn(...);
 
 5. ¿Como es la forma de verificación con mockito?
 En mockito se utiliza el mensajeverify(Mock), opcional -> Verification Mode).methodName()
+
+1) ¿Qué son los test doubles?
+1 - Los test doubles son test unitarios en los que se necesitan crear objetos falsos
+ para reemplazar comportamiento del DOC en el SUT.
+
+2) Enumere los tipos de test doubles y de ejemplos concretos de uso. Indique como usaría, cuando es posible,
+mockito para emular los diferentes tipos de tipos de test double
+
+Dummy Object - Usado como placeholder. mock(Type.class);
+Stub Object - Usado para devolver informacion programada - mock(Type.class); when(Stub.methodCall).thenReturn(...);
+Mock Object - Es un STUB, que verifica que sus mensajes devuelvan lo que deben.
+Spy Object - Es un Mock, que llama a los metodos reales del objeto.
+
+
+
