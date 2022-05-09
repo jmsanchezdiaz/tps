@@ -3,8 +3,11 @@ package ar.unq.poo2.tpdoubles.ej1;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.Arrays;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 
 public class PokerStatusConCartaTest {
 	private PokerStatusConCarta pokerStatus;
@@ -28,7 +31,7 @@ public class PokerStatusConCartaTest {
 		carta3 = new Carta("A", "T");
 		carta4 = new Carta("A", "D");
 		carta5 = new Carta("A", "P");
-		String status = pokerStatus.verificar(carta1, carta2, carta3,carta4, carta5); // Exercise
+		String status = pokerStatus.verificar(Arrays.asList(carta1,carta2,carta3,carta4,carta5)); // Exercise
 	
 		assertEquals(status , "Poker"); // Verify
 	}
@@ -41,7 +44,7 @@ public class PokerStatusConCartaTest {
 		carta3 = new Carta("10", "T");
 		carta4 = new Carta("A", "D");
 		carta5 = new Carta("10", "D");
-		String status = pokerStatus.verificar(carta1, carta2, carta3,carta4, carta5); // Exercise
+		String status = pokerStatus.verificar(Arrays.asList(carta1,carta2,carta3,carta4,carta5)); // Exercise
 	
 		assertEquals(status , "Trio"); // Verify
 	}
@@ -54,7 +57,7 @@ public class PokerStatusConCartaTest {
 		carta3 = new Carta("2", "P");
 		carta4 = new Carta("4", "P");
 		carta5 = new Carta("Q", "P");
-		String status = pokerStatus.verificar(carta1, carta2, carta3,carta4, carta5); // Exercise
+		String status = pokerStatus.verificar(Arrays.asList(carta1,carta2,carta3,carta4,carta5)); // Exercise
 	
 		assertEquals(status , "Color"); // Verify
 	}
@@ -67,7 +70,7 @@ public class PokerStatusConCartaTest {
 		carta3 = new Carta("2", "T");
 		carta4 = new Carta("10", "D");
 		carta5 = new Carta("Q", "P");
-		String status = pokerStatus.verificar(carta1, carta2, carta3,carta4, carta5); // Exercise
+		String status = pokerStatus.verificar(Arrays.asList(carta1,carta2,carta3,carta4,carta5)); // Exercise
 		
 		assertEquals(status , ""); // Verify
 	}

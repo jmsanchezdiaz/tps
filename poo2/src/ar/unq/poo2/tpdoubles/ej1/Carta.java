@@ -9,6 +9,15 @@ public class Carta {
 		this.setPalo(palo);
 	}
 
+	public void setValor(String valor2) {
+		this.valor = valor2;
+	}
+
+	/**
+	 * @param Carta card - carta a comparar con la actual.
+	 * @return boolean - indicando true si la carta actual era mayor a la provista.
+	 */
+	
 	public boolean isGreaterThan(Carta card) {
 		if(this.equals(card)
 		&& Integer.valueOf(this.getValor()) < Integer.valueOf(card.getValor())
@@ -23,14 +32,6 @@ public class Carta {
 		return this.getValor().equals("Q");
 	}
 	
-	public boolean isSamePalo(Carta card) {
-		return this.getPalo().equals(card.getPalo());
-	}
-	
-	public boolean isNumberEqualWith(Carta otherCard) {
-		return this.getValor().equals(otherCard.getValor());
-	}
-	
 	public String getPalo() {
 		return palo;
 	}
@@ -41,17 +42,6 @@ public class Carta {
 
 	public String getValor() {
 		return valor;
-	}
-
-	public void setValor(String valor) {
-		this.valor = valor;
-	}
-	
-	@Override
-	public boolean equals(Object obj) {
-		Carta otherCard = (Carta) obj;
-	
-		return this.isSamePalo(otherCard) && this.isNumberEqualWith(otherCard);
 	}
 	
 }
