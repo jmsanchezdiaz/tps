@@ -71,4 +71,22 @@ public class PokerStatusConCartaTest {
 		
 		assertEquals(status , ""); // Verify
 	}
+	
+	@Test
+	void puedoSaberSiUnaCartaEsMayorQueOtra() {
+		//Set up
+		carta1 = new Carta("10", "P");
+		carta2 = new Carta("A", "C");
+		
+		assertTrue(carta1.isGreaterThan(carta2)); // Verify
+	}
+	
+	@Test
+	void puedoSaberSiUnaCartaNoEsMayorQueOtra() {
+		//Set up
+		carta1 = new Carta("10", "P");
+		carta2 = new Carta("A", "C");
+		
+		assertTrue(carta2.isGreaterThan(carta1)); // Verify
+	}
 }
