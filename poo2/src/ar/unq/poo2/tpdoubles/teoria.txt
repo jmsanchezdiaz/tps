@@ -1,0 +1,27 @@
+1. Implementar los test del ejercicio anterior (verificar con 5 Cartas) utilizando mockito.
+2. ¿Cómo se indica en mockito que el objeto mock debe recibir un secuencia de mensajes particular en un orden
+preestablecido? Agregue un ejemplo.
+ 2) Se crea una instancia de la clase InOrder, y se le pasan como parametros los mocks a verificar en orden.
+ 
+ Ejemplo.
+ InOrder inOrder = inOrder(singleMock);
+
+ inOrder.verify(singleMock).add("was added first");
+ inOrder.verify(singleMock).add("was added second");
+ 
+3. ¿Cómo hacer para que un objeto mock este preparado para recibir algunos mensajes sin importar el orden o la
+obligatoriedad de recibirlos? Agregue un ejemplo.
+usamos los metodos when y then return.
+
+EJEMPLO:
+when(Objeto.methodName()).thenReturn(<VALOR QUE SE ESPERA RETORNAR>);
+
+
+4. Es posible anidar envío de mensajes con mockito. Si es posible, como se hace.
+
+Si es posible cuando el mensaje devuelve la instancia del mock.
+e.g:
+when(Objeto.methodName).thenReturn(...);
+
+5. ¿Como es la forma de verificación con mockito?
+En mockito se utiliza el mensajeverify(Mock), opcional -> Verification Mode).methodName()
