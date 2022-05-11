@@ -1,15 +1,15 @@
 package ar.unq.poo2.tpdoubles.ej1;
 
 public class Carta {
-	private String valor;
-	private String palo;
+	private ValorDeCarta valor;
+	private ColorDeCarta palo;
 	
-	public Carta(String valor, String palo) {
+	public Carta(ValorDeCarta valor, ColorDeCarta palo) {
 		this.setValor(valor);
 		this.setPalo(palo);
 	}
 
-	public void setValor(String valor2) {
+	public void setValor(ValorDeCarta valor2) {
 		this.valor = valor2;
 	}
 
@@ -19,29 +19,25 @@ public class Carta {
 	 */
 	
 	public boolean isGreaterThan(Carta card) {
-		if(this.equals(card)
-		&& Integer.valueOf(this.getValor()) < Integer.valueOf(card.getValor())
-		&& this.isNumber("A")
-		&& this.isNumber("J") && card.isNumber("Q")
-		&& this.isNumber("Q") && card.isNumber("K")) return false;
-
-		return true;
+		return this.getValor().isGreaterThan(card.getValor());
 	}
 	
-	public boolean isNumber(String value) {
-		return this.getValor().equals("Q");
-	}
 	
-	public String getPalo() {
+	public ColorDeCarta getPalo() {
 		return palo;
 	}
 
-	public void setPalo(String palo) {
+	public void setPalo(ColorDeCarta palo) {
 		this.palo = palo;
 	}
 
-	public String getValor() {
+	public ValorDeCarta getValor() {
 		return valor;
+	}
+
+	public boolean isColor(ColorDeCarta palo2) {
+
+		return this.getPalo().isEqualTo(palo2);
 	}
 	
 }

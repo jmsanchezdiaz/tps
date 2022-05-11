@@ -3,6 +3,7 @@ package ar.unq.poo2.tpdoubles.ej1;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.awt.Color;
 import java.util.Arrays;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -26,70 +27,54 @@ public class PokerStatusConCartaTest {
 	@Test
 	void puedoVerificarSiUnConjuntoDeCartasEsPoker() {
 		//Set up
-		carta1 = new Carta("10", "P");
-		carta2 = new Carta("A", "C");
-		carta3 = new Carta("A", "T");
-		carta4 = new Carta("A", "D");
-		carta5 = new Carta("A", "P");
-		String status = pokerStatus.verificar(Arrays.asList(carta1,carta2,carta3,carta4,carta5)); // Exercise
+		carta1 = new Carta(ValorDeCarta.DIEZ, ColorDeCarta.PICAS);
+		carta2 = new Carta(ValorDeCarta.A, ColorDeCarta.CORAZONES);
+		carta3 = new Carta(ValorDeCarta.A, ColorDeCarta.TREBOLES);
+		carta4 = new Carta(ValorDeCarta.A, ColorDeCarta.DIAMANTE);
+		carta5 = new Carta(ValorDeCarta.A, ColorDeCarta.PICAS);
+		PokerValues status = pokerStatus.verificar(Arrays.asList(carta1,carta2,carta3,carta4,carta5)); // Exercise
 	
-		assertEquals(status , "Poker"); // Verify
+		assertEquals(status , PokerValues.POKER); // Verify
 	}
 	
 	@Test
 	void puedoVerificarSiUnConjuntoDeCartasEsTrio() {
 		//Set up
-		carta1 = new Carta("10", "P");
-		carta2 = new Carta("A", "C");
-		carta3 = new Carta("10", "T");
-		carta4 = new Carta("A", "D");
-		carta5 = new Carta("10", "D");
-		String status = pokerStatus.verificar(Arrays.asList(carta1,carta2,carta3,carta4,carta5)); // Exercise
+		carta1 = new Carta(ValorDeCarta.DIEZ, ColorDeCarta.PICAS);
+		carta2 = new Carta(ValorDeCarta.A, ColorDeCarta.CORAZONES);
+		carta3 = new Carta(ValorDeCarta.DIEZ, ColorDeCarta.TREBOLES);
+		carta4 = new Carta(ValorDeCarta.A, ColorDeCarta.DIAMANTE);
+		carta5 = new Carta(ValorDeCarta.DIEZ, ColorDeCarta.PICAS);
+		PokerValues status = pokerStatus.verificar(Arrays.asList(carta1,carta2,carta3,carta4,carta5)); // Exercise
 	
-		assertEquals(status , "Trio"); // Verify
+		assertEquals(status , PokerValues.TRIO); // Verify
 	}
 	
 	@Test
 	void puedoVerificarSiUnConjuntoDeCartasEsColor() {
 		//Set up
-		carta1 = new Carta("10", "P");
-		carta2 = new Carta("A", "P");
-		carta3 = new Carta("2", "P");
-		carta4 = new Carta("4", "P");
-		carta5 = new Carta("Q", "P");
-		String status = pokerStatus.verificar(Arrays.asList(carta1,carta2,carta3,carta4,carta5)); // Exercise
+		carta1 = new Carta(ValorDeCarta.DIEZ, ColorDeCarta.PICAS);
+		carta2 = new Carta(ValorDeCarta.TRES, ColorDeCarta.PICAS);
+		carta3 = new Carta(ValorDeCarta.A, ColorDeCarta.PICAS);
+		carta4 = new Carta(ValorDeCarta.DOS, ColorDeCarta.PICAS);
+		carta5 = new Carta(ValorDeCarta.A, ColorDeCarta.PICAS);
+		PokerValues status = pokerStatus.verificar(Arrays.asList(carta1,carta2,carta3,carta4,carta5)); // Exercise
 	
-		assertEquals(status , "Color"); // Verify
+		assertEquals(status , PokerValues.COLOR); // Verify
 	}
 	
 	@Test
 	void puedoVerficarSiUnConjuntoDeCartasNoEsNada() {
 		//Set up
-		carta1 = new Carta("10", "P");
-		carta2 = new Carta("A", "C");
-		carta3 = new Carta("2", "T");
-		carta4 = new Carta("10", "D");
-		carta5 = new Carta("Q", "P");
-		String status = pokerStatus.verificar(Arrays.asList(carta1,carta2,carta3,carta4,carta5)); // Exercise
+		carta1 = new Carta(ValorDeCarta.DIEZ, ColorDeCarta.PICAS);
+		carta2 = new Carta(ValorDeCarta.A, ColorDeCarta.CORAZONES);
+		carta3 = new Carta(ValorDeCarta.DOS, ColorDeCarta.TREBOLES);
+		carta4 = new Carta(ValorDeCarta.DIEZ, ColorDeCarta.DIAMANTE);
+		carta5 = new Carta(ValorDeCarta.Q, ColorDeCarta.PICAS);
+
+		PokerValues status = pokerStatus.verificar(Arrays.asList(carta1,carta2,carta3,carta4,carta5)); // Exercise
 		
-		assertEquals(status , ""); // Verify
+		assertEquals(status , PokerValues.NOTHING); // Verify
 	}
 	
-	@Test
-	void puedoSaberSiUnaCartaEsMayorQueOtra() {
-		//Set up
-		carta1 = new Carta("10", "P");
-		carta2 = new Carta("A", "C");
-		
-		assertTrue(carta1.isGreaterThan(carta2)); // Verify
-	}
-	
-	@Test
-	void puedoSaberSiUnaCartaNoEsMayorQueOtra() {
-		//Set up
-		carta1 = new Carta("10", "P");
-		carta2 = new Carta("A", "C");
-		
-		assertTrue(carta2.isGreaterThan(carta1)); // Verify
-	}
 }

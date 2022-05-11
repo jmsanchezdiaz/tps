@@ -17,6 +17,11 @@ public class PokerStatusConCartaConMockitoTest {
 	private Carta carta3;
 	private Carta carta4;
 	private Carta carta5;
+	private Carta otraCarta1;
+	private Carta otraCarta2;
+	private Carta otraCarta3;
+	private Carta otraCarta4;
+	private Carta otraCarta5;
 
 	@BeforeEach
 	void setUp() { 
@@ -27,47 +32,52 @@ public class PokerStatusConCartaConMockitoTest {
 		this.carta3 = mock(Carta.class);
 		this.carta4 = mock(Carta.class);
 		this.carta5 = mock(Carta.class);
+		this.otraCarta1 = mock(Carta.class);
+		this.otraCarta2 = mock(Carta.class);
+		this.otraCarta3 = mock(Carta.class);
+		this.otraCarta4 = mock(Carta.class);
+		this.otraCarta5 = mock(Carta.class);
 	}
 	
 	@Test
 	void puedoVerificarSiUnConjuntoDeCartasEsPoker() {
 		//Set up
-		when(carta1.getValor()).thenReturn("10");
-		when(carta2.getValor()).thenReturn("A");
-		when(carta3.getValor()).thenReturn("A");
-		when(carta4.getValor()).thenReturn("A");
-		when(carta5.getValor()).thenReturn("A");
-		String status = pokerStatus.verificar(Arrays.asList(carta1,carta2,carta3,carta4,carta5)); // Exercise
-		assertEquals(status , "Poker"); // Verify
+		when(carta1.getValor()).thenReturn(ValorDeCarta.DIEZ);
+		when(carta2.getValor()).thenReturn(ValorDeCarta.A);
+		when(carta3.getValor()).thenReturn(ValorDeCarta.A);
+		when(carta4.getValor()).thenReturn(ValorDeCarta.A);
+		when(carta5.getValor()).thenReturn(ValorDeCarta.A);
+		PokerValues status = pokerStatus.verificar(Arrays.asList(carta1,carta2,carta3,carta4,carta5)); // Exercise
+		assertEquals(status , PokerValues.POKER); // Verify
 	}
 	
 	@Test
 	void puedoVerificarSiUnConjuntoDeCartasEsTrio() {
 		//Set up
-		when(carta1.getValor()).thenReturn("10");
-		when(carta2.getValor()).thenReturn("A");
-		when(carta3.getValor()).thenReturn("10");
-		when(carta4.getValor()).thenReturn("A");
-		when(carta5.getValor()).thenReturn("10");
+		when(carta1.getValor()).thenReturn(ValorDeCarta.DIEZ);
+		when(carta2.getValor()).thenReturn(ValorDeCarta.A);
+		when(carta3.getValor()).thenReturn(ValorDeCarta.DIEZ);
+		when(carta4.getValor()).thenReturn(ValorDeCarta.A);
+		when(carta5.getValor()).thenReturn(ValorDeCarta.DIEZ);
 
-		String status = pokerStatus.verificar(Arrays.asList(carta1,carta2,carta3,carta4,carta5)); // Exercise
+		PokerValues status = pokerStatus.verificar(Arrays.asList(carta1,carta2,carta3,carta4,carta5)); // Exercise
 		
-		assertEquals(status , "Trio"); // Verify
+		assertEquals(status , PokerValues.TRIO); // Verify
 	}
 	
 	@Test
 	void puedoVerificarSiUnConjuntoDeCartasEsColor() {
 		//Set up
-		when(carta1.getValor()).thenReturn("10");
-		when(carta2.getValor()).thenReturn("A");
-		when(carta3.getValor()).thenReturn("3");
-		when(carta4.getValor()).thenReturn("4");
-		when(carta5.getValor()).thenReturn("6");
-		when(carta1.getPalo()).thenReturn("D");
-		when(carta2.getPalo()).thenReturn("D");
-		when(carta3.getPalo()).thenReturn("D");
-		when(carta4.getPalo()).thenReturn("D");
-		when(carta5.getPalo()).thenReturn("D");
+		when(carta1.getValor()).thenReturn(ValorDeCarta.DIEZ);
+		when(carta2.getValor()).thenReturn(ValorDeCarta.A);
+		when(carta3.getValor()).thenReturn(ValorDeCarta.TRES);
+		when(carta4.getValor()).thenReturn(ValorDeCarta.CUATRO);
+		when(carta5.getValor()).thenReturn(ValorDeCarta.SEIS);
+		when(carta1.getPalo()).thenReturn(ColorDeCarta.DIAMANTE);
+		when(carta2.getPalo()).thenReturn(ColorDeCarta.DIAMANTE);
+		when(carta3.getPalo()).thenReturn(ColorDeCarta.DIAMANTE);
+		when(carta4.getPalo()).thenReturn(ColorDeCarta.DIAMANTE);
+		when(carta5.getPalo()).thenReturn(ColorDeCarta.DIAMANTE);
 		
 		assertEquals(pokerStatus.verificar(Arrays.asList(carta1,carta2,carta3,carta4,carta5)) , "Color"); // Verify
 	}
@@ -75,21 +85,18 @@ public class PokerStatusConCartaConMockitoTest {
 	@Test
 	void puedoVerficarSiUnConjuntoDeCartasNoEsNada() {
 		//Set up
-		when(carta1.getValor()).thenReturn("10");
-		when(carta1.getPalo()).thenReturn("P");
-		when(carta2.getValor()).thenReturn("A");
-		when(carta2.getPalo()).thenReturn("C");
-		when(carta3.getValor()).thenReturn("6");
-		when(carta3.getPalo()).thenReturn("T");
-		when(carta4.getValor()).thenReturn("3");
-		when(carta4.getPalo()).thenReturn("D");
-		when(carta5.getValor()).thenReturn("10");
-		when(carta5.getPalo()).thenReturn("C");
-		String status = pokerStatus.verificar(Arrays.asList(carta1,carta2,carta3,carta4,carta5)); // Exercise
+		when(carta1.getValor()).thenReturn(ValorDeCarta.DIEZ);
+		when(carta1.getPalo()).thenReturn(ColorDeCarta.PICAS);
+		when(carta2.getValor()).thenReturn(ValorDeCarta.A);
+		when(carta2.getPalo()).thenReturn(ColorDeCarta.CORAZONES);
+		when(carta3.getValor()).thenReturn(ValorDeCarta.SEIS);
+		when(carta3.getPalo()).thenReturn(ColorDeCarta.TREBOLES);
+		when(carta4.getValor()).thenReturn(ValorDeCarta.TRES);
+		when(carta4.getPalo()).thenReturn(ColorDeCarta.DIAMANTE);
+		when(carta5.getValor()).thenReturn(ValorDeCarta.DIEZ);
+		when(carta5.getPalo()).thenReturn(ColorDeCarta.CORAZONES);
+		PokerValues status = pokerStatus.verificar(Arrays.asList(carta1,carta2,carta3,carta4,carta5)); // Exercise
 		
-		assertEquals(status , ""); // Verify
+		assertEquals(status , PokerValues.NOTHING); // Verify
 	}
-	
-	
-	
 }

@@ -10,13 +10,13 @@ public class CartaTest {
 	
 	@BeforeEach
 	void setup() {
-		card = new Carta("Q", "D");
+		card = new Carta(ValorDeCarta.Q, ColorDeCarta.DIAMANTE);
 	}
 	
 	@Test
 	void puedoSaberSiUnaCartaEsMayorQueOtra() {
 		//Set up
-		Carta card2 = new Carta("10", "P");
+		Carta card2 = new Carta(ValorDeCarta.DIEZ, ColorDeCarta.TREBOLES);
 		
 		assertTrue(card.isGreaterThan(card2)); // Verify
 	}

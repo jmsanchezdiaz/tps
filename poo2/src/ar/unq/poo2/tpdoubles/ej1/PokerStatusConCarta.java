@@ -10,7 +10,7 @@ public class PokerStatusConCarta {
 	 * @return String - retorna un string poker , trio, color o nada.
 	 * @author juanmasd11
 	 */
-	public String verificar(List<Carta> cardList) {
+	public PokerValues verificar(List<Carta> cardList) {
 		Carta carta1 = cardList.get(0);
 		Carta carta2 = cardList.get(1);
 		Carta carta3 = cardList.get(2);
@@ -21,18 +21,15 @@ public class PokerStatusConCarta {
 		
 
 		if(this.isPoker(cardsListWithCard1Equals) || this.isPoker(cardsListWithCard2Equals)|| this.isPoker(cardsListWithCard3Equals)) {
-			System.out.println("Poker");
-			return "Poker";
+			return PokerValues.POKER;
 		}
 		else if(this.isTrio(cardsListWithCard1Equals) || this.isTrio(cardsListWithCard2Equals) || this.isTrio(cardsListWithCard3Equals)) {
-			System.out.println("Trio");
-			return "Trio";
+			return PokerValues.TRIO;
 		}
 		else if(this.isColor(cardList)) {
-			System.out.println("Color");
-			return "Color";
+			return PokerValues.COLOR;
 		}
-		return "";
+		return PokerValues.NOTHING;
 	}
 	
 	/**
@@ -40,7 +37,7 @@ public class PokerStatusConCarta {
 	 * @param cardList : lista de cartas
 	 * @return true si el mazo es color.
 	 */
-	private boolean isColor(List<Carta> cardList) {
+	public boolean isColor(List<Carta> cardList) {
 		Carta firstCard = cardList.get(0);
 		
 		return cardList.stream().allMatch(card -> this.isSamePaloThat(card, firstCard));
@@ -53,7 +50,7 @@ public class PokerStatusConCarta {
 	 * @return true si ambas cartas son del mismo palo
 	 */
 	public boolean isSamePaloThat(Carta card, Carta otherCard) {
-		return card.getPalo().equals(otherCard.getPalo());
+		return card.getPalo() == otherCard.getPalo();
 	}
 	
 	/**
@@ -62,7 +59,7 @@ public class PokerStatusConCarta {
 	 * @return true si el mazo es poker
 	 */
 	
-	private boolean isPoker(List<Carta> cardList) {
+	public boolean isPoker(List<Carta> cardList) {
 		return cardList.size() == 4;
 	}
 	
@@ -71,7 +68,7 @@ public class PokerStatusConCarta {
 	 * @param cardList
 	 * @return boolean - true si es trio
 	 */
-	private boolean isTrio(List<Carta> cardList) {
+	public boolean isTrio(List<Carta> cardList) {
 		return cardList.size() == 3;
 	}
 
@@ -82,7 +79,7 @@ public class PokerStatusConCarta {
 	 * @return boolean - true si ambas cartas son del mismo valor
 	 */
 	private boolean isSameNumberThat(Carta card, Carta otherCard) {
-		return card.getValor().equals(otherCard.getValor());
+		return card.getValor() == otherCard.getValor();
 	}
 	
 	/**
