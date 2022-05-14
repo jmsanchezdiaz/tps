@@ -1,0 +1,15 @@
+1. En la intención del patrón se indica que el cliente debe poder tratar de manera 
+uniforme tanto a objetos individuales como compuestos. 
+¿Cómo se logra esto con el patrón Composite?
+Se define una clase abstracta/interface donde se define el protocolo en común entre los objetos primitivos
+y los compuestos. Gracias a esto los objetos compuestos usan la composicion recursiva, siendo compuestos por
+objetos de la clase abstracta.
+
+2. Expliquen en que casos aplicaria el patron.
+* En casos donde necesites listar objetos compuestos y primitivos de forma uniforme sin que el cliente los distinga.
+* Se quiere representar una jerarquia parcial de objetos en forma de arbol.
+
+3. Dentro de las consecuencias, se indica que los clientes deben mantenerse
+simples y no deben ser conscientes si están interactuando con un objeto hoja o una composición.
+¿Qué elementos de la programación orientada a objetos lo hacen posible ?
+la herencia porque ambos al ser extendidos de una clase abstracta (componente) pueden responder ambos al mismo mensaje.

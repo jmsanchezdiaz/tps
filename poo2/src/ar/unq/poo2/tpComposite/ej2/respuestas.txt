@@ -1,0 +1,11 @@
+3. Describa las alternativas que puede utilizar para calcular la ganancia anual.
+Relacione las alternativas.
+
+3. En los componentes Leaf, se devuelve la ganancia anual de la region y en los Composite se
+itera durante los children acumulando la ganancia anual.
+
+4. Explique la discusión sobre quiénes deben implementar las operaciones de
+agregado y borrado de hijos.
+
+4. En mi parecer deberia implementarlo los objetos Composite, porque si lo implementara en el 
+component en el protocolo, los metodos deberian ser sobreescribidos en los objetos Leaf.
