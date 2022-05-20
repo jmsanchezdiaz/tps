@@ -1,24 +1,15 @@
 package ar.unq.poo2.tpObserver.ej2;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class AplicacionMovil implements Listener {
-
-	private List<Partido> partidosDeInteres;
-	private List<String> intereses;
-	private Publisher publisher;
+public class AplicacionMovil extends ListenerDePartidos {
 	
-	@Override
-	public void update(Publisher publisher, Partido partido) {
-		this.addPartidoDeInteres(partido);
-	}
-
-	private void addPartidoDeInteres(Partido partido) {
-		this.getPartidosDeInteres().add(partido);
-	}
-
-	private List<Partido> getPartidosDeInteres() {
-		return this.partidosDeInteres;
+	public AplicacionMovil(Publisher publisher, List<String> intereses) {
+		this.setPublisher(publisher);
+		this.setIntereses(intereses);
+		this.setPartidosDeInteres(new ArrayList<Partido>());
+		this.getPublisher().suscribir(this);
 	}
 
 	@Override
@@ -26,21 +17,6 @@ public class AplicacionMovil implements Listener {
 		return this.getIntereses().stream().anyMatch(interes -> partido.esAlgunContrincante(interes) || partido.esDeporte(interes));
 	}
 
-	public List<String> getIntereses() {
-		return intereses;
-	}
-
-	public void setInteres(List<String> interes) {
-		this.intereses = interes;
-	}
-
-	public Publisher getPublisher() {
-		return publisher;
-	}
-
-	public void setPublisher(Publisher publisher) {
-		this.publisher = publisher;
-	}
 
 
 }
