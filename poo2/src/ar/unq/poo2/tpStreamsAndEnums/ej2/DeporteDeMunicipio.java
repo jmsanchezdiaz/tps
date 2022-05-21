@@ -39,9 +39,10 @@ public class DeporteDeMunicipio {
 		return this.getActividades().stream().mapToInt(act -> act.getDuracion()).sum();
 	}
 
-	public ActividadSemanal actividadDeMenorCostoDe(Deporte futbol) {
+	public ActividadSemanal actividadDeMenorCostoDe(Deporte deporte) {
 		return this.getActividades()
 				.stream()
+				.filter(act -> act.esDe(deporte))
 				.min(Comparator.comparing((ActividadSemanal act) -> act.precioDeActividad()))
 				.get();
 	}
@@ -52,12 +53,17 @@ public class DeporteDeMunicipio {
 			.forEach(act -> System.out.println(act.toString()));
 	}
 
-	public Map<Deporte, Optional<ActividadSemanal>> actividadesConMenorCosto() {
-		Comparator<ActividadSemanal> compa = Comparator.comparingInt(ActividadSemanal::precioDeActividad);
+	public Map<Deporte, ActividadSemanal> actividadesConMenorCosto() {
+		Map<Deporte, ActividadSemanal> map = new HashMap<Deporte, ActividadSemanal>();
 		
-		Map<Deporte, Optional<ActividadSemanal>> map = this.getActividades()
-				.stream()
-				.collect(Collectors.groupingBy(ActividadSemanal::getDeporte, Collectors.minBy(compa)));
+		for(ActividadSemanal act : this.getActividades()){
+		   Deporte deporte = act.getDeporte();
+		 	if(!map.containsKey(deporte)){
+		 		ActividadSemanal actividadMasBarata = this.actividadDeMenorCostoDe(deporte);
+		 		map.put(deporte, actividadMasBarata);
+		 	}
+		}
+
 		return map;
 	}
 }

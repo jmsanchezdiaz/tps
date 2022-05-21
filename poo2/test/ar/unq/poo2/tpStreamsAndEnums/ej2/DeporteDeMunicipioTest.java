@@ -60,7 +60,7 @@ public class DeporteDeMunicipioTest {
 		mapEsperado.put(futbol1.getDeporte(), futbol1);
 		mapEsperado.put(jabalina1.getDeporte(), jabalina1);
 		
-		this.municipio.actividadesConMenorCosto().forEach((key, act) -> assertEquals(act.get(), mapEsperado.get(key)));
+		assertEquals(mapEsperado, this.municipio.actividadesConMenorCosto());
 	}
 	
 	@Ignore
