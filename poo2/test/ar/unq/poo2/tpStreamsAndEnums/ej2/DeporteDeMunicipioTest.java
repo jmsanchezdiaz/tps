@@ -3,8 +3,14 @@ package ar.unq.poo2.tpStreamsAndEnums.ej2;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import org.junit.Ignore;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import net.bytebuddy.build.ToStringPlugin.Exclude;
 
 public class DeporteDeMunicipioTest {
 	DeporteDeMunicipio municipio;
@@ -40,12 +46,24 @@ public class DeporteDeMunicipioTest {
 	}
 	
 	@Test
-	void puedoSaberLaActividadDeMenorCosotDeUnDeporteDado() {
+	void puedoSaberLaActividadDeMenorCostoDeUnDeporteDado() {
 		this.municipio.agendarActividad(futbol2);
 		assertEquals(this.municipio.actividadDeMenorCostoDe(Deporte.FUTBOL), futbol1);
 	}
 	
 	@Test
+	void puedoSaberLasActividadesConMenorCostoTest() {
+		Map<Deporte, ActividadSemanal> mapEsperado = new HashMap<Deporte, ActividadSemanal>();
+		
+		this.municipio.agendarActividad(futbol2);
+		
+		mapEsperado.put(futbol1.getDeporte(), futbol1);
+		mapEsperado.put(jabalina1.getDeporte(), jabalina1);
+		
+		this.municipio.actividadesConMenorCosto().forEach((key, act) -> assertEquals(act.get(), mapEsperado.get(key)));
+	}
+	
+	@Ignore
 	void testImpresion() {
 		this.municipio.imprimirTodasLasActividades();
 
