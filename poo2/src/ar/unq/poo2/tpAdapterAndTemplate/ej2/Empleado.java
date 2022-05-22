@@ -7,15 +7,15 @@ public abstract class Empleado {
 	private int cantidadDeHijos;
 	private EstadoCivil estadoCivil;
 	
-	
+	// Template Method
 	public final double sueldo() {	
-		double sueldoTotal = this.getSueldoBasico();
-		double bonoFamiliar = this.calcularBonoFamiliar();
-		double bonoPorHorasTrabajadas = this.calcularBonoPorHorasTrabajadas();
+		double sueldoTotal = this.getSueldoBasico(); // Hook
+		double bonoFamiliar = this.calcularBonoFamiliar(); // Native
+		double bonoPorHorasTrabajadas = this.calcularBonoPorHorasTrabajadas(); // Native
 	
 		sueldoTotal += bonoFamiliar + bonoPorHorasTrabajadas;
 		
-		return sueldoTotal - this.calcularRetenciones(sueldoTotal);
+		return sueldoTotal - this.calcularRetenciones(sueldoTotal); // Hook
 	}
 	
 	private double calcularRetenciones(double sueldoTotal) {
