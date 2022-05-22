@@ -32,7 +32,7 @@ public abstract class LlamadaTelefonica {
 		}
 	}
 	
-	//Hook
+	//Concrete
 	public float costoNeto(){
 		return this.getTiempo()*1;
 	}

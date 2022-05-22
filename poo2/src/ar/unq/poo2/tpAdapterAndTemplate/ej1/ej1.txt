@@ -4,7 +4,7 @@ Ejercicio 1 - Lea el pattern Template Method
 a. ¿Dónde se define el esqueleto del algoritmo? En la super clase / clase abstracta.
 b. ¿Se puede redefinir el esqueleto? No porque debe declararse final para que no sea sobreescrito.
 c. ¿Qué es lo que se puede redefinir? Las operaciones nativas y/o hooks;
-d. ¿Qué es un hook method? Es una operacion ya tiene comportamiento en la superclase y puede ser sobreescrito.
+d. ¿Qué es un hook method? Es una operacion tiene cuerpo vacio y puede ser sobreescrito por las subclases.
 3. Busque dos ejemplos del patrón en las clases de la imagen de Smalltalk.
 4. Para cada ejemplo, realice un diagrama de clases indicando:
 a. La clase abstracta.

@@ -9,7 +9,7 @@ public abstract class Empleado {
 	
 		sueldoTotal += bonoFamiliar + bonoPorHorasTrabajadas;
 		
-		return sueldoTotal - this.calcularRetenciones(sueldoTotal); // Hook
+		return sueldoTotal - this.calcularRetenciones(sueldoTotal); // Concrete
 	}
 	
 	protected abstract double getSueldoBasico();
