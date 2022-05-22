@@ -39,6 +39,13 @@ public class DeporteDeMunicipio {
 		return this.getActividades().stream().mapToInt(act -> act.getDuracion()).sum();
 	}
 
+	/**
+	 * Obtiene y retorna la actividad menos costosa de un deporte pasado
+	 * por parametro.
+	 * 
+	 * @param deporte - un Deporte.
+	 * @return la ActividadSemanal menos costosa de ese deporte.
+	 */
 	public ActividadSemanal actividadDeMenorCostoDe(Deporte deporte) {
 		return this.getActividades()
 				.stream()
@@ -47,12 +54,21 @@ public class DeporteDeMunicipio {
 				.get();
 	}
 	
+	/**
+	 * Imprime todas las actividades.
+	 */
 	public void imprimirTodasLasActividades() {
 		this.getActividades()
 			.stream()
 			.forEach(act -> System.out.println(act.toString()));
 	}
 
+	/**
+	 * Crea un Map con las actividades menos costosas de cada deporte.
+	 * 
+	 * @author juan manuel
+	 * @return Map - Un mapa con los deportes como clave y su actividad menos costosa como valor.
+	 */
 	public Map<Deporte, ActividadSemanal> actividadesConMenorCosto() {
 		Map<Deporte, ActividadSemanal> map = new HashMap<Deporte, ActividadSemanal>();
 		

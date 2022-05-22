@@ -50,6 +50,7 @@ public class DeporteDeMunicipioTest {
 		this.municipio.agendarActividad(futbol2);
 		assertEquals(this.municipio.actividadDeMenorCostoDe(Deporte.FUTBOL), futbol1);
 	}
+
 	
 	@Test
 	void puedoSaberLasActividadesConMenorCostoTest() {
