@@ -1,22 +1,33 @@
 package ar.unq.poo2.tpAdapterAndTemplate.ej2;
 
 public class Pasante extends Empleado {
+	private int cantidadDeHorasTrabajadas;
+	
+	public Pasante(int cantHorasTrabajadas) {
+		this.setCantidadDeHorasTrabajadas(cantHorasTrabajadas);
 
-	public Pasante(String nombre, EstadoCivil estadoCivil, int cantHijos, int cantHorasTrabajadas) {
-		this.setNombre(nombre);
-		this.setEstadoCivil(estadoCivil);
-		this.setHorasTrabajadas(cantHorasTrabajadas);
-		this.setSueldoBasico(0);
-		this.setCantidadDeHijos(cantHorasTrabajadas);
 	}
 	
 	@Override
 	protected double calcularBonoPorHorasTrabajadas() {
-		return this.getHorasTrabajadas() * 40;
+		return this.getCantidadDeHorasTrabajadas() * 40;
 	}
 
 	@Override
 	protected double calcularBonoFamiliar() {
+		return 0;
+	}
+
+	public int getCantidadDeHorasTrabajadas() {
+		return cantidadDeHorasTrabajadas;
+	}
+
+	public void setCantidadDeHorasTrabajadas(int cantidadDeHorasTrabajadas) {
+		this.cantidadDeHorasTrabajadas = cantidadDeHorasTrabajadas;
+	}
+
+	@Override
+	protected double getSueldoBasico() {
 		return 0;
 	}
 
