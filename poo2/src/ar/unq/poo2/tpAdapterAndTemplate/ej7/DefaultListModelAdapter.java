@@ -1,8 +1,6 @@
 package ar.unq.poo2.tpAdapterAndTemplate.ej7;
 
 import javax.swing.DefaultListModel;
-import javax.swing.ListModel;
-import javax.swing.event.ListDataListener;
 
 public class DefaultListModelAdapter<E> extends DefaultListModel<String>  {
 
